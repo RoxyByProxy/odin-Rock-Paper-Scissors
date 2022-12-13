@@ -29,31 +29,31 @@ function getPlayerChoice() {
 //compare the answers
 function playRound(pChoice, cChoice) {
     if (pChoice === cChoice) {
-        return "The game is a tie";
+        return ("The game is a tie! You both played, " + cChoice + ".");
     }
 
     else if (pChoice == "rock" && cChoice == "paper") {
-        return "The computer wins";
+        return "The computer wins! Paper beats rock.";
     }
 
     else if (pChoice == "rock" && cChoice == "scissors") {
-        return "The player wins";
+        return "The player wins! Rock beats scissors.";
     }
 
     else if (pChoice == "paper" && cChoice == "scissors") {
-        return "The computer wins";
+        return "The computer wins! Scissors beats paper.";
     }
 
     else if (pChoice == "paper" && cChoice == "rock") {
-        return "The player wins";
+        return "The player wins! Paper beats rock.";
     }
 
     else if (pChoice == "scissors" && cChoice == "rock") {
-        return "The computer wins";
+        return "The computer wins! Rock beats scissors.";
     }
 
     else if (pChoice == "scissors" && cChoice == "paper") {
-        return "The player wins"
+        return "The player wins! Scissors beats paper."
     }
 
     else {
@@ -61,9 +61,6 @@ function playRound(pChoice, cChoice) {
     }
 }
 //print result
-function declareWinner(result, pChoice, cChoice) {
-
-}
 //run the game in a loop
 function game() {
     //intialize variables
