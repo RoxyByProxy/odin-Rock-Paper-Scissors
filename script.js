@@ -32,27 +32,27 @@ function playRound(pChoice, cChoice) {
         return ("The game is a tie! You both played, " + cChoice + ".");
     }
 
-    else if (pChoice == "rock" && cChoice == "paper") {
+    else if (pChoice === "rock" && cChoice === "paper") {
         return "The computer wins! Paper beats rock.";
     }
 
-    else if (pChoice == "rock" && cChoice == "scissors") {
+    else if (pChoice === "rock" && cChoice == "scissors") {
         return "The player wins! Rock beats scissors.";
     }
 
-    else if (pChoice == "paper" && cChoice == "scissors") {
+    else if (pChoice === "paper" && cChoice === "scissors") {
         return "The computer wins! Scissors beats paper.";
     }
 
-    else if (pChoice == "paper" && cChoice == "rock") {
+    else if (pChoice === "paper" && cChoice === "rock") {
         return "The player wins! Paper beats rock.";
     }
 
-    else if (pChoice == "scissors" && cChoice == "rock") {
+    else if (pChoice === "scissors" && cChoice === "rock") {
         return "The computer wins! Rock beats scissors.";
     }
 
-    else if (pChoice == "scissors" && cChoice == "paper") {
+    else if (pChoice === "scissors" && cChoice === "paper") {
         return "The player wins! Scissors beats paper."
     }
 
@@ -71,15 +71,15 @@ function game() {
     for (let x = 0; x <=4; x++) {
         let result = playRound(getPlayerChoice(), getComputerChoice());
 
-        if (result.substring(4,5) == "p") {
+        if (result.substring(4,5) === "p") {
             console.log(result);
             pScore++;
         }
-        else if (result.substring(4,5) == "c") {
+        else if (result.substring(4,5) === "c") {
             console.log(result);
             cScore++;
         }
-        else if (result.substring(9,10) == "i") {
+        else if (result.substring(9,10) === "i") {
             console.log(result);
             pScore = pScore + 0.5;
             cScore = cScore + 0.5;
