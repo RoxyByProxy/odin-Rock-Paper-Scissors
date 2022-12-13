@@ -85,7 +85,7 @@ function game() {
             cScore = cScore + 0.5;
         }
         else {
-            console.log(result + " This was an error catch message");
+            console.log(result + " This was an error catch message.");
             x--;
         }
     }
@@ -100,7 +100,14 @@ function game() {
         console.log("The game is a tie! With both the player and the computer scoring " + cScore + ".");
     }
     //prompt for continue?
-
+    let con = prompt("Would you like to play another game?");
+    if (con.toLowerCase() === "yes" || con.toLowerCase() === "y") {
+        console.log("You have chosen, " + con + " Restarting the game.");
+        game()
+    }
+    else {
+        console.log("you have chosen, " + con + " Closing the game, please refresh the page to play again.");
+    }
 }
 game();
 //return to start
