@@ -57,37 +57,29 @@ function playRound(pChoice, cChoice) {
 }
 //print result
 //run the game in a loop
-function game() {
+function game(pChoice, cChoice) {
     //calculate result of played round
+    //change how pscore and cscore are saved and displayed, maybe a seperate function?
+    let result = playRound(pChoice, cChoice);
+
+    if (result.substring(4,5) === "p") {
+        console.log(result);
+        pScore++;
+    }
+    else if (result.substring(4,5) === "c") {
+        console.log(result);
+        cScore++;
+    }
+    else {
+        console.log(result);
+        pScore = pScore + 0.5;
+        cScore = cScore + 0.5;
+    }
+
     //display winner
     //update scores
     //check for round winner
-    let pScore = 0;
-    let cScore = 0;
 
-    //use for loop to play game and keep score
-    for (let x = 0; x <=4; x++) {
-        let result = playRound(getPlayerChoice(), getComputerChoice());
-
-        if (result.substring(4,5) === "p") {
-            console.log(result);
-            pScore++;
-        }
-        else if (result.substring(4,5) === "c") {
-            console.log(result);
-            cScore++;
-        }
-        else if (result.substring(9,10) === "i") {
-            console.log(result);
-            pScore = pScore + 0.5;
-            cScore = cScore + 0.5;
-        }
-        else {
-            console.log(result + " This was an error catch message.");
-            x--;
-        }
-    }
-    //report score and winner at end
     if (pScore > cScore) {
         console.log("The player wins the game! With a score of " + pScore + " vs. the computer's " + cScore + ".");
     }
@@ -118,7 +110,7 @@ const scissors = document.querySelector('#scissors');
 //initialize scores
 const pScore = document.querySelector('.score#player');
 const cScore = document.querySelector('.score#cpu');
-
+//something is wrong with this in testing, probably not how it works
 pScore.textContent = '0';
 cScore.textContent = '0';
 
