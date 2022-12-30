@@ -19,13 +19,8 @@ function getComputerChoice() {
     return compChoice;
 }
 //poll the player for a choice and then save it
-function getPlayerChoice() {
+//Moved to bottom of file for dependency reasons
 
-    let playerChoice = prompt("Choose Rock, Paper, or Scissors.");
-    playerChoice = playerChoice.toLowerCase();
-
-    return playerChoice;
-}
 //compare the answers
 function playRound(pChoice, cChoice) {
     if (pChoice === cChoice) {
@@ -109,5 +104,18 @@ function game() {
         console.log("you have chosen, " + con + " Closing the game, please refresh the page to play again.");
     }
 }
-game();
 //return to start
+
+//make buttons listen for clicks
+//make constants for buttons
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#rock');
+const scissors = document.querySelector('#scissors');
+
+//have buttons listen for clicks
+rock.addEventListener('click', () => {
+    
+})
+//have buttons call playRound
+//have buttons update scoreboard
+//have buttons check for winners
