@@ -58,7 +58,10 @@ function playRound(pChoice, cChoice) {
 //print result
 //run the game in a loop
 function game() {
-    //intialize variables
+    //calculate result of played round
+    //display winner
+    //update scores
+    //check for round winner
     let pScore = 0;
     let cScore = 0;
 
@@ -107,10 +110,17 @@ function game() {
 //return to start
 
 //make buttons listen for clicks
-//make constants for buttons
+//initialize buttons
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#rock');
 const scissors = document.querySelector('#scissors');
+
+//initialize scores
+const pScore = document.querySelector('.score#player');
+const cScore = document.querySelector('.score#cpu');
+
+pScore.textContent = '0';
+cScore.textContent = '0';
 
 //have buttons listen for clicks
 //have buttons call playRound
