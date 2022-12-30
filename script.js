@@ -113,9 +113,16 @@ const paper = document.querySelector('#rock');
 const scissors = document.querySelector('#scissors');
 
 //have buttons listen for clicks
-rock.addEventListener('click', () => {
-    
-})
 //have buttons call playRound
 //have buttons update scoreboard
 //have buttons check for winners
+rock.addEventListener('click', () => {
+    game(rock, getComputerChoice());
+    //rewrite game() to run once, update scores, and check for winners
+})
+paper.addEventListener('click', () => {
+    game(paper, getComputerChoice());
+})
+scissors.addEventListener('click', () => {
+    game(paper, getComputerChoice());
+})
