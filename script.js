@@ -55,25 +55,32 @@ function playRound(pChoice, cChoice) {
         return "Your input was not recognized, please try again.";
     }
 }
+//initialize scores
+const pScore = document.querySelector('.score#player');
+const cScore = document.querySelector('.score#cpu');
+//something is wrong with this in testing, probably not how it works
+pScore.textContent = '0';
+cScore.textContent = '0';
+//change scores
+
 //print result
 //run the game in a loop
-function game(pChoice, cChoice) {
+function game(pChoice) {
     //calculate result of played round
     //change how pscore and cscore are saved and displayed, maybe a seperate function?
-    let result = playRound(pChoice, cChoice);
+    let result = playRound(pChoice, getComputerChoice());
 
     if (result.substring(4,5) === "p") {
         console.log(result);
-        pScore++;
+        scoreAdjust('player', 1);
     }
     else if (result.substring(4,5) === "c") {
         console.log(result);
-        cScore++;
+    scoreAdjust('cpu', 1);
     }
     else {
         console.log(result);
-        pScore = pScore + 0.5;
-        cScore = cScore + 0.5;
+        scoreAdjust('both',0.5);
     }
 
     //display winner
@@ -89,15 +96,6 @@ function game(pChoice, cChoice) {
     else {
         console.log("The game is a tie! With both the player and the computer scoring " + cScore + ".");
     }
-    //prompt for continue?
-    let con = prompt("Would you like to play another game?");
-    if (con.toLowerCase() === "yes" || con.toLowerCase() === "y") {
-        console.log("You have chosen, " + con + " Restarting the game.");
-        game()
-    }
-    else {
-        console.log("you have chosen, " + con + " Closing the game, please refresh the page to play again.");
-    }
 }
 //return to start
 
@@ -107,24 +105,17 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#rock');
 const scissors = document.querySelector('#scissors');
 
-//initialize scores
-const pScore = document.querySelector('.score#player');
-const cScore = document.querySelector('.score#cpu');
-//something is wrong with this in testing, probably not how it works
-pScore.textContent = '0';
-cScore.textContent = '0';
-
 //have buttons listen for clicks
 //have buttons call playRound
 //have buttons update scoreboard
 //have buttons check for winners
 rock.addEventListener('click', () => {
-    game(rock, getComputerChoice());
+    game('rock');
     //rewrite game() to run once, update scores, and check for winners
 })
 paper.addEventListener('click', () => {
-    game(paper, getComputerChoice());
+    game('paper');
 })
 scissors.addEventListener('click', () => {
-    game(paper, getComputerChoice());
+    game('paper');
 })
