@@ -75,19 +75,19 @@ function scoreAdjust(who, amount) {
     //determines who scored and awards points
     if (who === 'player') {
         const score = Number(pScore.textContent);
-        pScore.textContent = score + amount;
+        pScore.textContent = ((score * 10)+ amount) / 10;
         return;
     }
     else if (who === 'cpu') {
         const score = Number(cScore.textContent);
-        cScore.textContent = score + amount;
+        cScore.textContent = ((score * 10) + amount) / 10;
         return;
     }
     else {
         let score = Number(pScore.textContent);
-        pScore.textConent = score + amount;
+        pScore.textContent = ((score * 10) + amount) / 10;
         score = Number(cScore.textContent);
-        cScore.textcontent = score + amount;
+        cScore.textContent = ((score * 10) + amount) / 10;
         return;
     }
 }
@@ -114,15 +114,15 @@ function game(pChoice) {
 
     if (result.substring(4,5) === "p") {
         results.textContent = result;
-        scoreAdjust('player', 1);
+        scoreAdjust('player', 10);
     }
     else if (result.substring(4,5) === "c") {
         results.textContent = result;
-        scoreAdjust('cpu', 1);
+        scoreAdjust('cpu', 10);
     }
     else {
         results.textContent = result;
-        scoreAdjust('both',0.5);
+        scoreAdjust('both', 5);
     }
 
     //check for round winner
