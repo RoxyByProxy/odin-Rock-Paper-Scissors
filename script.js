@@ -56,19 +56,50 @@ function playRound(pChoice, cChoice) {
     }
 }
 //initialize scores
-const pScore = document.querySelector('.score#player');
-const cScore = document.querySelector('.score#cpu');
-//something is wrong with this in testing, probably not how it works
+const pScore = document.querySelector('#player');
+const cScore = document.querySelector('#cpu');
+
 pScore.textContent = '0';
 cScore.textContent = '0';
 
 //change scores
 function scoreAdjust(who, amount) {
-    
+    //resets the score for isOver()
+    if (amount === 0 && who === 'both') {
+        pScore.textContent = '0';
+        cScore.textContent = '0';
+        return;
+    }
+    //determines who scored and awards points
+    if (who === 'player') {
+        const score = pScore.textContent;
+        pScore.textContent = score + amount;
+        return;
+    }
+    else if (who === 'cpu') {
+        const score = cScore.textContent;
+        cScore.textContent = score + amount;
+        return;
+    }
+    else {
+        let score = pScore.textContent;
+        pScore.textConent = score + amount;
+        score = cScore.textContent;
+        cScore.textcontent = score + amount;
+        return;
+    }
 }
 //determine winner
 function isOver(winner) {
-
+    if (winner === 'player') {
+        return pScore.textContent > cScore.textContent && pScore.textContent >= 5;
+    }
+    else if (winner === 'cpu') {
+        return cScore.textContent > pScore.textContent && cScore.textContent >= 5;
+    }
+    else {
+        return pScore.textContent === cScore.textContent && pScore.textContent >= 5;
+    }
 }
 //print result
 //run the game in a loop
@@ -85,7 +116,7 @@ function game(pChoice) {
     }
     else if (result.substring(4,5) === "c") {
         console.log(result);
-    scoreAdjust('cpu', 1);
+        scoreAdjust('cpu', 1);
     }
     else {
         console.log(result);
@@ -93,15 +124,15 @@ function game(pChoice) {
     }
 
     //check for round winner
-    if (isover('player')) {
+    if (isOver('player')) {
         console.log("The player wins the game! Starting new game.");
         scoreAdjust('both', 0);
     }
-    else if (isover('cpu')) {
+    else if (isOver('cpu')) {
         console.log ("The computer wins the game! Starting new game.");
         scoreAdjust('both', 0);
     }
-    else if (isover('tie')) {
+    else if (isOver('tie')) {
         console.log("The game is a tie! Starting new game.");
         scoreAdjust('both', 0);
     }
