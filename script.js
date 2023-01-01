@@ -72,19 +72,19 @@ function scoreAdjust(who, amount) {
     }
     //determines who scored and awards points
     if (who === 'player') {
-        const score = pScore.textContent;
+        const score = Number(pScore.textContent);
         pScore.textContent = score + amount;
         return;
     }
     else if (who === 'cpu') {
-        const score = cScore.textContent;
+        const score = Number(cScore.textContent);
         cScore.textContent = score + amount;
         return;
     }
     else {
-        let score = pScore.textContent;
+        let score = Number(pScore.textContent);
         pScore.textConent = score + amount;
-        score = cScore.textContent;
+        score = Number(cScore.textContent);
         cScore.textcontent = score + amount;
         return;
     }
@@ -92,13 +92,13 @@ function scoreAdjust(who, amount) {
 //determine winner
 function isOver(winner) {
     if (winner === 'player') {
-        return pScore.textContent > cScore.textContent && pScore.textContent >= 5;
+        return pScore.textContent > cScore.textContent && Number(pScore.textContent) >= 5;
     }
     else if (winner === 'cpu') {
-        return cScore.textContent > pScore.textContent && cScore.textContent >= 5;
+        return cScore.textContent > pScore.textContent && Number(cScore.textContent) >= 5;
     }
     else {
-        return pScore.textContent === cScore.textContent && pScore.textContent >= 5;
+        return pScore.textContent === cScore.textContent && Number(pScore.textContent) >= 5;
     }
 }
 //print result
@@ -142,7 +142,7 @@ function game(pChoice) {
 //make buttons listen for clicks
 //initialize buttons
 const rock = document.querySelector('#rock');
-const paper = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
 //have buttons listen for clicks
