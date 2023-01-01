@@ -61,13 +61,22 @@ const cScore = document.querySelector('.score#cpu');
 //something is wrong with this in testing, probably not how it works
 pScore.textContent = '0';
 cScore.textContent = '0';
-//change scores
 
+//change scores
+function scoreAdjust(who, amount) {
+    
+}
+//determine winner
+function isOver(winner) {
+
+}
 //print result
 //run the game in a loop
 function game(pChoice) {
     //calculate result of played round
     //change how pscore and cscore are saved and displayed, maybe a seperate function?
+    //display winner
+    //update scores
     let result = playRound(pChoice, getComputerChoice());
 
     if (result.substring(4,5) === "p") {
@@ -83,18 +92,18 @@ function game(pChoice) {
         scoreAdjust('both',0.5);
     }
 
-    //display winner
-    //update scores
     //check for round winner
-
-    if (pScore > cScore) {
-        console.log("The player wins the game! With a score of " + pScore + " vs. the computer's " + cScore + ".");
+    if (isover('player')) {
+        console.log("The player wins the game! Starting new game.");
+        scoreAdjust('both', 0);
     }
-    else if (pScore < cScore) {
-        console.log ("The computer wins the game! With a score of " + cScore + " vs. the player's " + pScore + ".");
+    else if (isover('cpu')) {
+        console.log ("The computer wins the game! Starting new game.");
+        scoreAdjust('both', 0);
     }
-    else {
-        console.log("The game is a tie! With both the player and the computer scoring " + cScore + ".");
+    else if (isover('tie')) {
+        console.log("The game is a tie! Starting new game.");
+        scoreAdjust('both', 0);
     }
 }
 //return to start
