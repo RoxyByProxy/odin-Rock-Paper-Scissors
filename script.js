@@ -58,6 +58,8 @@ function playRound(pChoice, cChoice) {
 //initialize scores
 const pScore = document.querySelector('#player');
 const cScore = document.querySelector('#cpu');
+const results = document.querySelector('#result');
+const winners = document.querySelector('#winner');
 
 pScore.textContent = '0';
 cScore.textContent = '0';
@@ -111,29 +113,29 @@ function game(pChoice) {
     let result = playRound(pChoice, getComputerChoice());
 
     if (result.substring(4,5) === "p") {
-        console.log(result);
+        results.textContent = result;
         scoreAdjust('player', 1);
     }
     else if (result.substring(4,5) === "c") {
-        console.log(result);
+        results.textContent = result;
         scoreAdjust('cpu', 1);
     }
     else {
-        console.log(result);
+        results.textContent = result;
         scoreAdjust('both',0.5);
     }
 
     //check for round winner
     if (isOver('player')) {
-        console.log("The player wins the game! Starting new game.");
+        winners.textContent = "The player wins the game! " + pScore.textContent + " to " + cScore.textcontent + ". Starting new game.";
         scoreAdjust('both', 0);
     }
     else if (isOver('cpu')) {
-        console.log ("The computer wins the game! Starting new game.");
+        winners.textContent = "The computer wins the game! " + cScore.textContent + " to " + pScore.textContent + ". Starting new game.";
         scoreAdjust('both', 0);
     }
     else if (isOver('tie')) {
-        console.log("The game is a tie! Starting new game.");
+        winners.textContent = "The game is a tie! " + pScore.textContent + " all. Starting new game.";
         scoreAdjust('both', 0);
     }
 }
